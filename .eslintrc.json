@@ -26,7 +26,9 @@
     ],
     "rules": {
       "prettier/prettier": "error",
+      "jsx-a11y/label-has-associated-control": "off",
       "no-unused-vars": "off",
+      "react/prop-types": "off",
       "react-hooks/rules-of-hooks": "error",
       "react/react-in-jsx-scope": "off",
       "react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx"] }],

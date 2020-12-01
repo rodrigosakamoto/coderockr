@@ -1,3 +1,79 @@
 import styled from 'styled-components';
 
-export const Container = styled.div``;
+export const Container = styled.div`
+  max-width: 1280px;
+  width: 100%;
+
+  margin: 100px auto;
+
+  background: #fff;
+`;
+
+export const DetailsHeader = styled.div`
+  display: flex;
+  align-items: center;
+
+  > div {
+    width: 100%;
+    img {
+      max-width: 640px;
+      width: 100%;
+      height: 640px;
+    }
+  }
+`;
+
+export const DetailsHeaderContent = styled.div`
+  max-width: 640px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  div {
+    max-width: 400px;
+    height: 236px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    span {
+      font-size: 18px;
+      color: #032937;
+      line-height: 26px;
+    }
+
+    p {
+      font-size: 24px;
+      line-height: 34px;
+      color: #2d2d2d;
+    }
+
+    h2 {
+      font-size: 36px;
+      line-height: 43px;
+      font-weight: bold;
+      color: #f1a10a;
+    }
+  }
+`;
+
+export const DetailsContent = styled.div`
+  width: 100%;
+
+  padding: 124px 250px 168px;
+
+  div {
+    max-width: 780px;
+    margin: 0 auto;
+  }
+
+  p {
+    font-size: 24px;
+    line-height: 34px;
+
+    color: #2d2d2d;
+  }
+`;

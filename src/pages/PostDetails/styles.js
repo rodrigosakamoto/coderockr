@@ -21,6 +21,22 @@ export const DetailsHeader = styled.div`
       height: 640px;
     }
   }
+
+  @media (max-width: 900px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 46px 0;
+
+    > div {
+      display: flex;
+      justify-content: center;
+      img {
+        height: 320px;
+      }
+    }
+  }
 `;
 
 export const DetailsHeaderContent = styled.div`
@@ -58,6 +74,13 @@ export const DetailsHeaderContent = styled.div`
       color: #f1a10a;
     }
   }
+
+  @media (max-width: 900px) {
+    div {
+      text-align: center;
+      height: 120px;
+    }
+  }
 `;
 
 export const DetailsContent = styled.div`
@@ -75,5 +98,9 @@ export const DetailsContent = styled.div`
     line-height: 34px;
 
     color: #2d2d2d;
+  }
+
+  @media (max-width: 900px) {
+    padding: 0 80px 168px;
   }
 `;

@@ -34,6 +34,12 @@ export const SmallCard = styled(Link)`
       height: 100%;
     }
   }
+
+  @media (max-width: 900px) {
+    width: 100%;
+
+    margin: 60px 0 0;
+  }
 `;
 
 export const SmallCardInfoContainer = styled.div`
@@ -115,6 +121,13 @@ export const BigCard = styled(Link)`
     max-width: 640px;
     height: 640px;
   }
+
+  @media (max-width: 900px) {
+    margin-top: 60px;
+    img {
+      height: 300px;
+    }
+  }
 `;
 
 export const BigCardInfoContainer = styled.div`
@@ -143,11 +156,16 @@ export const BigCardInfoContainer = styled.div`
       height: 16px;
     }
   }
+
+  @media (max-width: 900px) {
+    height: 300px;
+  }
 `;
 
 export const BigCardInfo = styled.div`
   max-width: 480px;
   height: 315px;
+  padding: 10px;
 
   display: flex;
   flex-direction: column;
@@ -177,5 +195,16 @@ export const BigCardInfo = styled.div`
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+
+  @media (max-width: 900px) {
+    height: 250px;
+    p {
+      -webkit-line-clamp: 3;
+    }
+
+    h2 {
+      -webkit-line-clamp: 2;
+    }
   }
 `;

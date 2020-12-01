@@ -58,4 +58,25 @@ export const Wrapper = styled.nav`
       }
     }
   }
+
+  @media (max-width: 900px) {
+    > a {
+      font-size: 32px;
+    }
+    ul {
+      li {
+        &:nth-child(1) {
+          margin-right: 30px;
+        }
+
+        a {
+          font-size: 24px;
+        }
+
+        button {
+          font-size: 24px;
+        }
+      }
+    }
+  }
 `;

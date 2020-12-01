@@ -24,8 +24,10 @@ function PostList() {
 
       const data = (await response).data.map(article => ({
         ...article,
-        article: article.article.replace(/(<p[^>]+?>|<p>|<\/p>)/gim, ''),
-        title: article.title.replace(/<img[^>]*>/g, ''),
+        article: article.article
+          .substring(0, 100)
+          .replace(/(<p[^>]+?>|<p>|<\/p>)/gim, ''),
+        title: article.title.substring(0, 50).replace(/<img[^>]*>/g, ''),
       }));
 
       setArticles(data);

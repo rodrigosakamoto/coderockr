@@ -5,7 +5,8 @@
     },
     "extends": [
         "plugin:react/recommended",
-        "airbnb"
+        "airbnb",
+        "plugin:prettier/recommended"
     ],
     "globals": {
         "Atomics": "readonly",
@@ -20,9 +21,11 @@
     },
     "plugins": [
         "react",
-        "react-hooks"
+        "react-hooks",
+        "prettier"
     ],
     "rules": {
+      "prettier/prettier": "error",
       "react-hooks/rules-of-hooks": "error",
       "react/react-in-jsx-scope": "off",
       "react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx"] }],

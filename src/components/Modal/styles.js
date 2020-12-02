@@ -52,6 +52,7 @@ export const Content = styled.div`
 
     h2 {
       font-size: 36px;
+      font-weight: bold;
       color: #f1a10a;
       margin-bottom: 49px;
     }
@@ -77,6 +78,12 @@ export const Content = styled.div`
         width: 21px;
         height: 18px;
         margin-right: 39px;
+      }
+
+      transition: background 0.3s;
+
+      &:hover {
+        background: #565656;
       }
     }
   }

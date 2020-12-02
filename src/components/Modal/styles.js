@@ -23,6 +23,8 @@ export const Content = styled.div`
   width: 100%;
   padding: 30px 0;
 
+  margin: 0 18px;
+
   position: relative;
 
   > button {
@@ -44,6 +46,7 @@ export const Content = styled.div`
     width: 100%;
     max-width: 565px;
     margin: 0 auto;
+    padding: 10px;
 
     display: flex;
     flex-direction: column;

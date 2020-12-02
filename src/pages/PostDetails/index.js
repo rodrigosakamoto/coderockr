@@ -7,6 +7,7 @@ import api from '../../services/api';
 
 import {
   Container,
+  DetailsContainer,
   DetailsHeader,
   DetailsHeaderContent,
   DetailsContent,
@@ -29,23 +30,25 @@ function PostDetails() {
 
   return (
     <Container>
-      <DetailsHeader>
-        <div>
-          <img src={article.imageUrl} alt={article.id} />
-        </div>
-        <DetailsHeaderContent>
+      <DetailsContainer>
+        <DetailsHeader>
           <div>
-            <span>{article.date}</span>
-            <p>{article.author}</p>
-            <h2>{article.title}</h2>
+            <img src={article.imageUrl} alt={article.id} />
           </div>
-        </DetailsHeaderContent>
-      </DetailsHeader>
-      <DetailsContent>
-        <div>
-          <p>{article.article}</p>
-        </div>
-      </DetailsContent>
+          <DetailsHeaderContent>
+            <div>
+              <span>{article.date}</span>
+              <p>{article.author}</p>
+              <h2>{article.title}</h2>
+            </div>
+          </DetailsHeaderContent>
+        </DetailsHeader>
+        <DetailsContent>
+          <div>
+            <p>{article.article}</p>
+          </div>
+        </DetailsContent>
+      </DetailsContainer>
     </Container>
   );
 }

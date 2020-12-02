@@ -1,12 +1,18 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  max-width: 1280px;
   width: 100%;
+`;
 
+export const DetailsContainer = styled.div`
+  max-width: 1280px;
   margin: 100px auto;
 
   background: #fff;
+
+  @media (max-width: 900px) {
+    margin: 0 20px;
+  }
 `;
 
 export const DetailsHeader = styled.div`

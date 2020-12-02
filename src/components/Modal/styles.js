@@ -57,6 +57,7 @@ export const Content = styled.div`
     }
 
     button {
+      cursor: pointer;
       width: 230px;
       height: 48px;
       background: #2d2d2d;

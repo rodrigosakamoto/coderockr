@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { parseISO, format } from 'date-fns';
+
+import { formatDateWithDate } from '../../utils/formatDate';
 
 import api from '../../services/api';
 
@@ -21,7 +22,7 @@ function PostDetails() {
         ...response.data,
         article: response.data.article.replace(/<p>/gi, '').split(/<\/p>/),
         title: response.data.title.replace(/<img[^>]*>/g, ''),
-        date: format(parseISO(response.data.date), 'MMM d, y'),
+        date: formatDateWithDate(response.data.date),
       });
     });
   }, [params.id]);

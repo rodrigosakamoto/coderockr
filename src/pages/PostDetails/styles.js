@@ -78,7 +78,6 @@ export const DetailsHeaderContent = styled.div`
   @media (max-width: 900px) {
     div {
       text-align: center;
-      height: 120px;
     }
   }
 `;

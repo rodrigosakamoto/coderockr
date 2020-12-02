@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 
 import api from '../../services/api';
@@ -14,15 +14,23 @@ import {
   BigCardInfoContainer,
   BigCardInfo,
 } from './styles';
+import Loading from '../../components/Loading';
 
 function PostList() {
   const [articles, setArticles] = useState([]);
+  const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     async function loadArticles() {
-      const response = api.get('/articles');
+      const response = await api.get('/articles', {
+        params: {
+          _page: page,
+        },
+      });
 
-      const data = (await response).data.map(article => ({
+      const data = response.data.map(article => ({
         ...article,
         article: article.article
           .substring(0, 100)
@@ -30,11 +38,28 @@ function PostList() {
         title: article.title.substring(0, 50).replace(/<img[^>]*>/g, ''),
       }));
 
-      setArticles(data);
+      setArticles([...articles, ...data]);
+      setLoading(false);
+    }
+    loadArticles();
+  }, [page]);
+
+  const handleScroll = useCallback(() => {
+    if (
+      window.innerHeight + document.documentElement.scrollTop <
+        document.documentElement.offsetHeight ||
+      loading
+    ) {
+      return;
     }
 
-    loadArticles();
-  }, []);
+    setPage(page + 1);
+  }, [page, loading]);
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [handleScroll]);
 
   return (
     <Container>
@@ -75,6 +100,7 @@ function PostList() {
           )}
         </>
       ))}
+      {loading && <Loading />}
     </Container>
   );
 }

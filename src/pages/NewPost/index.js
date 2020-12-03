@@ -5,6 +5,8 @@ import pencil from '../../assets/pencil.svg';
 
 import InputBlock from '../../components/InputBlock';
 
+import api from '../../services/api';
+
 import { Container, NewPostContent } from './styles';
 
 function NewPost() {
@@ -13,9 +15,22 @@ function NewPost() {
   const [image, setImage] = useState('');
   const [post, setPost] = useState('');
 
-  const handleSubmit = useCallback(event => {
-    event.preventDefault();
-  }, []);
+  const handleSubmit = useCallback(
+    event => {
+      event.preventDefault();
+
+      const data = {
+        title,
+        author,
+        image,
+        post,
+      };
+
+      api.post('/articles', data);
+    },
+
+    [title, author, image, post],
+  );
 
   return (
     <Container>
@@ -29,6 +44,7 @@ function NewPost() {
               placeholder="Fill the title"
               value={title}
               onChange={e => setTitle(e.target.value)}
+              required
             />
           </InputBlock>
 
@@ -38,6 +54,7 @@ function NewPost() {
               placeholder="Fill the author name"
               value={author}
               onChange={e => setAuthor(e.target.value)}
+              required
             />
           </InputBlock>
 
@@ -47,6 +64,7 @@ function NewPost() {
               placeholder="Fill the image URL"
               value={image}
               onChange={e => setImage(e.target.value)}
+              required
             />
           </InputBlock>
 
@@ -56,6 +74,7 @@ function NewPost() {
               placeholder="Post..."
               value={post}
               onChange={e => setPost(e.target.value)}
+              required
             />
           </InputBlock>
 

@@ -58,6 +58,10 @@ export const Content = styled.div`
       font-weight: bold;
       color: #f1a10a;
       margin-bottom: 49px;
+
+      @media (max-width: 900px) {
+        margin-bottom: 16px;
+      }
     }
 
     button {
@@ -67,6 +71,10 @@ export const Content = styled.div`
       background: #2d2d2d;
       border-radius: 4px;
       margin-top: 89px;
+
+      @media (max-width: 900px) {
+        margin-top: 16px;
+      }
 
       display: flex;
       justify-content: center;

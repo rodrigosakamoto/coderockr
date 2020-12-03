@@ -62,11 +62,11 @@ export const MenuContainer = styled.ul`
       width: 120px;
     }
 
-    @media (max-width: 980px) {
-      width: 100px;
+    @media (max-width: 600px) {
+      width: 80px;
 
       a {
-        font-size: 16px;
+        font-size: 14px;
       }
     }
   }
@@ -117,7 +117,7 @@ export const MenuContainer = styled.ul`
 
   @media (max-width: 600px) {
     li {
-      margin-right: 24px;
+      margin-right: 8px;
 
       &:nth-child(3) {
         margin-right: 0;

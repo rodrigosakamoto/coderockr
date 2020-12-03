@@ -57,7 +57,7 @@ export const SmallCardInfoContainer = styled.div`
   div.icon {
     text-decoration: none;
     position: absolute;
-    bottom: 10%;
+    bottom: 5%;
     right: 5%;
     cursor: pointer;
 
@@ -103,6 +103,16 @@ export const SmallCardInfo = styled.div`
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
+
+  @media (max-width: 900px) {
+    p {
+      font-size: 16px;
+    }
+
+    h2 {
+      font-size: 24px;
+    }
+  }
 `;
 
 export const BigCard = styled(Link)`
@@ -147,7 +157,7 @@ export const BigCardInfoContainer = styled.div`
   > div.icon {
     text-decoration: none;
     position: absolute;
-    bottom: 10%;
+    bottom: 5%;
     right: 5%;
     cursor: pointer;
 
@@ -201,10 +211,12 @@ export const BigCardInfo = styled.div`
     height: 250px;
     p {
       -webkit-line-clamp: 3;
+      font-size: 16px;
     }
 
     h2 {
       -webkit-line-clamp: 2;
+      font-size: 24px;
     }
   }
 `;

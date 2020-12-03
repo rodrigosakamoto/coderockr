@@ -1,9 +1,10 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useModal } from '../../hooks/modal';
 
 import Modal from '../Modal';
 
-import { Container, Wrapper } from './styles';
+import { Container, Wrapper, Logo, MenuContainer } from './styles';
 
 function Header() {
   const { handleModal } = useModal();
@@ -11,8 +12,8 @@ function Header() {
   return (
     <Container>
       <Wrapper>
-        <Link to="/">Rockr Blog</Link>
-        <ul>
+        <Logo to="/">Rockr Blog</Logo>
+        <MenuContainer>
           <li>
             <Link to="/">Posts</Link>
           </li>
@@ -22,7 +23,11 @@ function Header() {
               Contact
             </button>
           </li>
-        </ul>
+
+          <li className="new-post">
+            <Link to="/newPost">New Post</Link>
+          </li>
+        </MenuContainer>
       </Wrapper>
       <Modal />
     </Container>

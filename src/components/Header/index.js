@@ -25,7 +25,7 @@ function Header() {
           </li>
 
           <li className="new-post">
-            <Link to="/newPost">New Post</Link>
+            <Link to="/NewPost">New Post</Link>
           </li>
         </MenuContainer>
       </Wrapper>

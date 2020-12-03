@@ -11,6 +11,7 @@ const InputBlock = styled.div`
     color: #000;
     margin-bottom: 8px;
     line-height: 24px;
+    font-size: 24px;
   }
 
   input,

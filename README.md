@@ -28,15 +28,15 @@ As seguintes ferramentas foram usadas na construção do projeto:
 </div>
 
 <div align="center">
- <img src="./.github/posts.png" alt="posts" height="250px"/>
+ <img src="./.github/posts.png" alt="posts" height="200px"/>
 
-  <img src="./.github/post-details.png" alt="post-details" height="250px"/>
+  <img src="./.github/post-details.png" alt="post-details" height="200px"/>
 </div>
 
 <div align="center">
- <img src="./.github/contact.png" alt="contact" height="250px"/>
+ <img src="./.github/contact.png" alt="contact" height="200px"/>
 
-  <img src="./.github/new-post.png" alt="new post" height="250px"/>
+  <img src="./.github/new-post.png" alt="new post" height="200px"/>
 </div>
 
 ## Pré-requisitos

@@ -4,7 +4,9 @@ import { useModal } from '../../hooks/modal';
 import Close from '../../assets/close.svg';
 import Send from '../../assets/send.svg';
 
-import { Container, Content, InputBlock } from './styles';
+import InputBlock from '../InputBlock';
+
+import { Container, Content } from './styles';
 
 function Modal() {
   const { visible, handleModal } = useModal();

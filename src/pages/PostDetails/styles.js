@@ -2,16 +2,20 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const DetailsContainer = styled.div`
   max-width: 1280px;
+  width: 100%;
   margin: 100px auto;
-
   background: #fff;
 
   @media (max-width: 900px) {
-    margin: 0 20px;
+    margin: 100px 20px;
   }
 `;
 
@@ -33,7 +37,6 @@ export const DetailsHeader = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 46px 0;
 
     > div {
       display: flex;

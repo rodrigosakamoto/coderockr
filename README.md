@@ -4,7 +4,11 @@
 
 ## Sobre
 
-<p>Resultado do teste para vaga de desenvolvedor frontend júnior da <a href="https://coderockr.com/"                   target="_blank" rel="noopener noreferrer" >Coderockr</a></p>
+<p>Resultado do teste para vaga de desenvolvedor frontend júnior da <a href="https://coderockr.com/" target="_blank">Coderockr</a></p>
+
+<h2 align="center">
+<a href="https://coderockr.vercel.app/" target="_blank"  >Deploy here</a>
+</h2>
 
 ## 🔧 Tecnologias
 

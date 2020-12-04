@@ -19,8 +19,6 @@ function Modal() {
   const handleSubmit = useCallback(
     event => {
       event.preventDefault();
-
-      console.log(name, email, phone, post);
     },
     [name, email, phone, post],
   );

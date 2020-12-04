@@ -1,5 +1,4 @@
-import { useEffect, useState, useCallback } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useState, useCallback, Fragment } from 'react';
 
 import api from '../../services/api';
 
@@ -34,7 +33,8 @@ function PostList() {
         ...article,
         article: article.article
           .substring(0, 100)
-          .replace(/(<p[^>]+?>|<p>|<\/p>)/gim, ''),
+          .replace(/<p>/gi, '')
+          .split(/<\/p>/),
         title: article.title.substring(0, 50).replace(/<img[^>]*>/g, ''),
       }));
 
@@ -64,9 +64,9 @@ function PostList() {
   return (
     <Container>
       {articles.map((article, index) => (
-        <>
+        <Fragment key={index}>
           {(index + 1) % 3 !== 0 ? (
-            <SmallCard key={article.id} to={`/post/${article.id}`}>
+            <SmallCard to={`/post/${article.id}`}>
               <div className="image-container">
                 <img src={article.imageUrl} alt={article.title} />
               </div>
@@ -82,7 +82,7 @@ function PostList() {
               </SmallCardInfoContainer>
             </SmallCard>
           ) : (
-            <BigCard key={article.id} to={`/post/${article.id}`}>
+            <BigCard to={`/post/${article.id}`}>
               <div>
                 <img src={article.imageUrl} alt={article.title} />
               </div>
@@ -98,7 +98,7 @@ function PostList() {
               </BigCardInfoContainer>
             </BigCard>
           )}
-        </>
+        </Fragment>
       ))}
       {loading && <Loading />}
     </Container>

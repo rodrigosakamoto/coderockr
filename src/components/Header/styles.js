@@ -117,7 +117,7 @@ export const MenuContainer = styled.ul`
 
   @media (max-width: 600px) {
     li {
-      margin-right: 8px;
+      margin-right: 12px;
 
       &:nth-child(3) {
         margin-right: 0;

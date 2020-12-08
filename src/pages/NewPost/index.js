@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react';
+import { toast } from 'react-toastify';
 
 import newPost from '../../assets/newPost.png';
 import pencil from '../../assets/pencil.svg';
@@ -16,17 +17,22 @@ function NewPost() {
   const [post, setPost] = useState('');
 
   const handleSubmit = useCallback(
-    event => {
+    async event => {
       event.preventDefault();
 
-      const data = {
-        title,
-        author,
-        image,
-        post,
-      };
+      if (title === '' || author === '' || image === '' || post === '') {
+        toast.error('Todos os campos são obrigatórios');
+      } else {
+        const data = {
+          title,
+          author,
+          image,
+          post,
+        };
 
-      api.post('/articles', data);
+        await api.post('/articles', data);
+        toast.success('Post cadastrado com sucesso');
+      }
     },
 
     [title, author, image, post],
@@ -44,7 +50,6 @@ function NewPost() {
               placeholder="Fill the title"
               value={title}
               onChange={e => setTitle(e.target.value)}
-              required
             />
           </InputBlock>
 
@@ -54,7 +59,6 @@ function NewPost() {
               placeholder="Fill the author name"
               value={author}
               onChange={e => setAuthor(e.target.value)}
-              required
             />
           </InputBlock>
 
@@ -64,7 +68,6 @@ function NewPost() {
               placeholder="Fill the image URL"
               value={image}
               onChange={e => setImage(e.target.value)}
-              required
             />
           </InputBlock>
 
@@ -74,7 +77,6 @@ function NewPost() {
               placeholder="Post..."
               value={post}
               onChange={e => setPost(e.target.value)}
-              required
             />
           </InputBlock>
 

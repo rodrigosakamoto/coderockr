@@ -1,4 +1,6 @@
 import { useCallback, useState } from 'react';
+import InputMask from 'react-input-mask';
+import { toast } from 'react-toastify';
 import { useModal } from '../../hooks/modal';
 
 import Close from '../../assets/close.svg';
@@ -19,6 +21,12 @@ function Modal() {
   const handleSubmit = useCallback(
     event => {
       event.preventDefault();
+
+      if (name === '' || email === '' || phone === '' || post === '') {
+        toast.error('Todos os campos são obrigatórios');
+      } else {
+        toast.success('Contato cadastrado com sucesso');
+      }
     },
     [name, email, phone, post],
   );
@@ -51,7 +59,8 @@ function Modal() {
           </InputBlock>
           <InputBlock>
             <label>Phone</label>
-            <input
+            <InputMask
+              mask="(99) 99999-9999"
               type="text"
               placeholder="Fill your phone"
               value={phone}

@@ -1,8 +1,10 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useRef } from 'react';
 import { toast } from 'react-toastify';
 import { Form } from '@unform/web';
 import * as Yup from 'yup';
+
 import { useModal } from '../../hooks/modal';
+import getValidationErros from '../../utils/getValidationErrors';
 
 import Close from '../../assets/close.svg';
 import Send from '../../assets/send.svg';
@@ -13,14 +15,20 @@ import TextAreaBlock from '../TextAreaBlock';
 import { Container, Content } from './styles';
 
 function Modal() {
+  const formRef = useRef(null);
+
   const { visible, handleModal } = useModal();
 
   const handleSubmit = useCallback(async data => {
     try {
+      formRef.current.setErrors({});
+
       const schema = Yup.object().shape({
         name: Yup.string().required('Nome obrigatório'),
         email: Yup.string().email().required('E-mail obrigatório'),
-        phone: Yup.number().required('Telefone obrigatório'),
+        phone: Yup.number()
+          .typeError('Apenas números')
+          .required('Telefone obrigatório'),
         post: Yup.string().required('Post obrigatório'),
       });
 
@@ -31,8 +39,12 @@ function Modal() {
       toast.success('Contato cadastrado com sucesso');
     } catch (err) {
       if (err instanceof Yup.ValidationError) {
-        toast.error('Ocorreu um erro ao fazer o cadastro, tente novamente');
+        const errors = getValidationErros(err);
+
+        formRef.current.setErrors(errors);
       }
+
+      toast.error('Ocorreu um erro ao fazer o cadastro, tente novamente');
     }
   }, []);
 
@@ -42,7 +54,7 @@ function Modal() {
         <button type="button" onClick={handleModal}>
           <img src={Close} alt="close" />
         </button>
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit} ref={formRef}>
           <h2>Contact</h2>
           <InputBlock
             name="name"

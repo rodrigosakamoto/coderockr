@@ -35,6 +35,11 @@ export const InputBlock = styled.div`
     padding: 16px 18px 9px;
   }
 
+  span.error {
+    font-size: 16px;
+    color: #ff6347;
+  }
+
   @media (max-width: 900px) {
     & + & {
       margin-top: 8px;

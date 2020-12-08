@@ -1,5 +1,9 @@
-import { useState, useCallback } from 'react';
+import { useRef, useCallback } from 'react';
 import { toast } from 'react-toastify';
+import { Form } from '@unform/web';
+import * as Yup from 'yup';
+
+import getValidationErros from '../../utils/getValidationErrors';
 
 import newPost from '../../assets/newPost.png';
 import pencil from '../../assets/pencil.svg';
@@ -11,80 +15,62 @@ import api from '../../services/api';
 import { Container, NewPostContent } from './styles';
 
 function NewPost() {
-  const [title, setTitle] = useState('');
-  const [author, setAuthor] = useState('');
-  const [image, setImage] = useState('');
-  const [post, setPost] = useState('');
+  const formRef = useRef(null);
 
-  const handleSubmit = useCallback(
-    async event => {
-      event.preventDefault();
+  const handleSubmit = useCallback(async data => {
+    try {
+      formRef.current.setErrors({});
 
-      if (title === '' || author === '' || image === '' || post === '') {
-        toast.error('Todos os campos são obrigatórios');
-      } else {
-        const data = {
-          title,
-          author,
-          image,
-          post,
-        };
+      const schema = Yup.object().shape({
+        title: Yup.string().required('Titulo obrigatório'),
+        author: Yup.string().required('Autor obrigatório'),
+        image: Yup.string().required('Imagem obrigatória'),
+        post: Yup.string().required('Post obrigatório'),
+      });
 
-        await api.post('/articles', data);
-        toast.success('Post cadastrado com sucesso');
+      await schema.validate(data, {
+        abortEarly: false,
+      });
+
+      toast.success('Cadastrado realizado com sucesso');
+    } catch (err) {
+      if (err instanceof Yup.ValidationError) {
+        const errors = getValidationErros(err);
+
+        formRef.current.setErrors(errors);
       }
-    },
 
-    [title, author, image, post],
-  );
+      toast.error('Ocorreu um erro ao fazer o cadastro, tente novamente');
+    }
+  }, []);
 
   return (
     <Container>
       <NewPostContent>
-        <form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit} ref={formRef}>
           <img src={newPost} alt="new post" />
           <h2>New Post</h2>
-          <InputBlock>
-            <label>Title</label>
-            <input
-              placeholder="Fill the title"
-              value={title}
-              onChange={e => setTitle(e.target.value)}
-            />
-          </InputBlock>
+          <InputBlock placeholder="Fill the title" name="title" label="Title" />
 
-          <InputBlock>
-            <label>Author</label>
-            <input
-              placeholder="Fill the author name"
-              value={author}
-              onChange={e => setAuthor(e.target.value)}
-            />
-          </InputBlock>
+          <InputBlock
+            name="author"
+            placeholder="Fill the author name"
+            label="Author"
+          />
 
-          <InputBlock>
-            <label>Image URL</label>
-            <input
-              placeholder="Fill the image URL"
-              value={image}
-              onChange={e => setImage(e.target.value)}
-            />
-          </InputBlock>
+          <InputBlock
+            name="image"
+            placeholder="Fill the image URL"
+            label="Image URL"
+          />
 
-          <InputBlock>
-            <label>Post</label>
-            <textarea
-              placeholder="Post..."
-              value={post}
-              onChange={e => setPost(e.target.value)}
-            />
-          </InputBlock>
+          <InputBlock name="post" placeholder="Post..." label="Post" />
 
           <button type="submit">
             <img src={pencil} alt="pencil" />
             Create Post
           </button>
-        </form>
+        </Form>
       </NewPostContent>
     </Container>
   );

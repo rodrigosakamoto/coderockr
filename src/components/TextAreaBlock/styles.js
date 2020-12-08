@@ -2,9 +2,8 @@ import styled from 'styled-components';
 
 export const InputBlock = styled.div`
   width: 100%;
-  & + & {
-    margin-top: 48px;
-  }
+
+  margin-top: 48px;
 
   label {
     display: flex;
@@ -38,9 +37,12 @@ export const InputBlock = styled.div`
     padding: 16px;
   }
 
+  span.error {
+    font-size: 16px;
+    color: #ff6347;
+  }
+
   @media (max-width: 900px) {
-    & + & {
-      margin-top: 8px;
-    }
+    margin-top: 8px;
   }
 `;

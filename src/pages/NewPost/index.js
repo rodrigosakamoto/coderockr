@@ -3,6 +3,7 @@ import { toast } from 'react-toastify';
 import { Form } from '@unform/web';
 import * as Yup from 'yup';
 
+import TextAreaBlock from '../../components/TextAreaBlock';
 import getValidationErros from '../../utils/getValidationErrors';
 
 import newPost from '../../assets/newPost.png';
@@ -32,12 +33,15 @@ function NewPost() {
         abortEarly: false,
       });
 
+      api.post('/articles', data);
+
       toast.success('Cadastrado realizado com sucesso');
     } catch (err) {
       if (err instanceof Yup.ValidationError) {
         const errors = getValidationErros(err);
 
         formRef.current.setErrors(errors);
+        return;
       }
 
       toast.error('Ocorreu um erro ao fazer o cadastro, tente novamente');
@@ -64,7 +68,7 @@ function NewPost() {
             label="Image URL"
           />
 
-          <InputBlock name="post" placeholder="Post..." label="Post" />
+          <TextAreaBlock name="post" placeholder="Post..." label="Post" />
 
           <button type="submit">
             <img src={pencil} alt="pencil" />

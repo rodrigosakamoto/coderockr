@@ -42,6 +42,7 @@ function Modal() {
         const errors = getValidationErros(err);
 
         formRef.current.setErrors(errors);
+        return;
       }
 
       toast.error('Ocorreu um erro ao fazer o cadastro, tente novamente');

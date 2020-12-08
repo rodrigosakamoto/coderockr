@@ -1,35 +1,52 @@
-import { useCallback, useState } from 'react';
-import InputMask from 'react-input-mask';
+import { useCallback, useRef } from 'react';
 import { toast } from 'react-toastify';
+import { Form } from '@unform/web';
+import * as Yup from 'yup';
+
 import { useModal } from '../../hooks/modal';
+import getValidationErros from '../../utils/getValidationErrors';
 
 import Close from '../../assets/close.svg';
 import Send from '../../assets/send.svg';
 
 import InputBlock from '../InputBlock';
+import TextAreaBlock from '../TextAreaBlock';
 
 import { Container, Content } from './styles';
 
 function Modal() {
+  const formRef = useRef(null);
+
   const { visible, handleModal } = useModal();
 
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
-  const [post, setPost] = useState('');
+  const handleSubmit = useCallback(async data => {
+    try {
+      formRef.current.setErrors({});
 
-  const handleSubmit = useCallback(
-    event => {
-      event.preventDefault();
+      const schema = Yup.object().shape({
+        name: Yup.string().required('Nome obrigatório'),
+        email: Yup.string().email().required('E-mail obrigatório'),
+        phone: Yup.number()
+          .typeError('Apenas números')
+          .required('Telefone obrigatório'),
+        post: Yup.string().required('Post obrigatório'),
+      });
 
-      if (name === '' || email === '' || phone === '' || post === '') {
-        toast.error('Todos os campos são obrigatórios');
-      } else {
-        toast.success('Contato cadastrado com sucesso');
+      await schema.validate(data, {
+        abortEarly: false,
+      });
+
+      toast.success('Contato cadastrado com sucesso');
+    } catch (err) {
+      if (err instanceof Yup.ValidationError) {
+        const errors = getValidationErros(err);
+
+        formRef.current.setErrors(errors);
       }
-    },
-    [name, email, phone, post],
-  );
+
+      toast.error('Ocorreu um erro ao fazer o cadastro, tente novamente');
+    }
+  }, []);
 
   return (
     <Container visible={visible}>
@@ -37,49 +54,30 @@ function Modal() {
         <button type="button" onClick={handleModal}>
           <img src={Close} alt="close" />
         </button>
-        <form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit} ref={formRef}>
           <h2>Contact</h2>
-          <InputBlock>
-            <label>Name</label>
-            <input
-              type="text"
-              placeholder="Fill your full name"
-              value={name}
-              onChange={e => setName(e.target.value)}
-            />
-          </InputBlock>
-          <InputBlock>
-            <label>E-mail</label>
-            <input
-              type="email"
-              placeholder="Fill a valid e-mail"
-              value={email}
-              onChange={e => setEmail(e.target.value)}
-            />
-          </InputBlock>
-          <InputBlock>
-            <label>Phone</label>
-            <InputMask
-              mask="(99) 99999-9999"
-              type="text"
-              placeholder="Fill your phone"
-              value={phone}
-              onChange={e => setPhone(e.target.value)}
-            />
-          </InputBlock>
-          <InputBlock>
-            <label>Post</label>
-            <textarea
-              placeholder="Hello..."
-              value={post}
-              onChange={e => setPost(e.target.value)}
-            />
-          </InputBlock>
+          <InputBlock
+            name="name"
+            label="Nome"
+            placeholder="Fill your full name"
+          />
+          <InputBlock
+            name="email"
+            label="E-mail"
+            type="email"
+            placeholder="Fill a valid e-mail"
+          />
+          <InputBlock
+            name="phone"
+            label="Phone"
+            placeholder="Fill your phone"
+          />
+          <TextAreaBlock name="post" label="Post" placeholder="Hello..." />
           <button type="submit">
             <img src={Send} alt="send" />
             Submit
           </button>
-        </form>
+        </Form>
       </Content>
     </Container>
   );

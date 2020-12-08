@@ -26,6 +26,7 @@
     ],
     "rules": {
       "prettier/prettier": "error",
+      "react/jsx-props-no-spreading": "off",
       "no-alert": "off",
       "jsx-a11y/label-has-associated-control": "off",
       "no-unused-vars": "off",

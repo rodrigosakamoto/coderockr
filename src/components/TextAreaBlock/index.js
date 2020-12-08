@@ -6,7 +6,6 @@ import { InputBlock } from './styles';
 export default function Input({ name, label, ...rest }) {
   const inputRef = useRef(null);
   const { fieldName, defaultValue, registerField, error } = useField(name);
-
   useEffect(() => {
     registerField({
       name: fieldName,
@@ -24,7 +23,7 @@ export default function Input({ name, label, ...rest }) {
   return (
     <InputBlock>
       <label htmlFor={fieldName}>{label}</label>
-      <input
+      <textarea
         id={fieldName}
         ref={inputRef}
         defaultValue={defaultValue}

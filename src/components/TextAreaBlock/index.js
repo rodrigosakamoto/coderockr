@@ -23,7 +23,7 @@ export default function Input({ name, label, ...rest }) {
   return (
     <InputBlock>
       <label htmlFor={fieldName}>{label}</label>
-      <input
+      <textarea
         id={fieldName}
         ref={inputRef}
         defaultValue={defaultValue}

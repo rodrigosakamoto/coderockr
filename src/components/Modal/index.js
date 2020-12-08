@@ -52,6 +52,7 @@ function Modal() {
           <InputBlock>
             <label>Phone</label>
             <input
+              type="text"
               placeholder="Fill your phone"
               value={phone}
               onChange={e => setPhone(e.target.value)}

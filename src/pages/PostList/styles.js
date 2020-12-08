@@ -35,10 +35,11 @@ export const SmallCard = styled(Link)`
     }
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: 1024px) {
     width: 100%;
+    margin: 60px 20px 0;
 
-    margin: 60px 0 0;
+    flex-direction: row;
   }
 `;
 
@@ -104,7 +105,8 @@ export const SmallCardInfo = styled.div`
     overflow: hidden;
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: 1024px) {
+    max-width: 320px;
     p {
       font-size: 16px;
     }
@@ -119,6 +121,7 @@ export const BigCard = styled(Link)`
   text-decoration: none;
 
   width: 100%;
+
   display: flex;
   justify-content: flex-end;
 
@@ -126,16 +129,28 @@ export const BigCard = styled(Link)`
     justify-content: flex-start;
   }
 
-  img {
+  > div {
     width: 100%;
     max-width: 640px;
     height: 640px;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
   }
 
-  @media (max-width: 900px) {
-    margin-top: 60px;
-    img {
-      height: 300px;
+  @media (max-width: 1024px) {
+    margin: 60px 20px 0;
+
+    > div {
+      width: 100%;
+      max-width: 320px;
+      height: 320px;
+      img {
+        width: 100%;
+        height: 100%;
+      }
     }
   }
 `;
@@ -143,7 +158,6 @@ export const BigCard = styled(Link)`
 export const BigCardInfoContainer = styled.div`
   max-width: 640px;
   width: 100%;
-  height: 640px;
 
   background: #fff;
 
@@ -167,15 +181,16 @@ export const BigCardInfoContainer = styled.div`
     }
   }
 
-  @media (max-width: 900px) {
-    height: 300px;
+  @media (max-width: 1024px) {
+    height: 320px;
+    max-width: 480px;
   }
 `;
 
 export const BigCardInfo = styled.div`
+  width: 100%;
   max-width: 480px;
   height: 315px;
-  padding: 10px;
 
   display: flex;
   flex-direction: column;
@@ -201,13 +216,14 @@ export const BigCardInfo = styled.div`
     color: #f1a10a;
 
     display: -webkit-box;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: 1024px) {
+    max-width: 320px;
     height: 250px;
     p {
       -webkit-line-clamp: 3;
@@ -215,7 +231,6 @@ export const BigCardInfo = styled.div`
     }
 
     h2 {
-      -webkit-line-clamp: 2;
       font-size: 24px;
     }
   }

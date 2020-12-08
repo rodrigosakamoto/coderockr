@@ -32,7 +32,7 @@ function PostList() {
       const data = response.data.map(article => ({
         ...article,
         article: article.article
-          .substring(0, 100)
+          .substring(0, 80)
           .replace(/<p>/gi, '')
           .split(/<\/p>/),
         title: article.title.substring(0, 50).replace(/<img[^>]*>/g, ''),

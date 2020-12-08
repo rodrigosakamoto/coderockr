@@ -30,7 +30,7 @@ export const Logo = styled(Link)`
   color: #fff;
   text-decoration: none;
 
-  @media (max-width: 980px) {
+  @media (max-width: 1024px) {
     font-size: 24px;
   }
 
@@ -58,7 +58,7 @@ export const MenuContainer = styled.ul`
       font-size: 22px;
     }
 
-    @media (max-width: 980px) {
+    @media (max-width: 1024px) {
       width: 120px;
     }
 
@@ -97,7 +97,7 @@ export const MenuContainer = styled.ul`
     }
   }
 
-  @media (max-width: 980px) {
+  @media (max-width: 1024px) {
     li {
       margin-right: 32px;
 
@@ -117,7 +117,7 @@ export const MenuContainer = styled.ul`
 
   @media (max-width: 600px) {
     li {
-      margin-right: 8px;
+      margin-right: 12px;
 
       &:nth-child(3) {
         margin-right: 0;

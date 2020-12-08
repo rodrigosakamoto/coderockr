@@ -65,4 +65,16 @@ export const NewPostContent = styled.div`
       }
     }
   }
+
+  @media (max-width: 1024px) {
+    margin: 20px;
+
+    form {
+      margin: 20px;
+
+      img {
+        max-width: 250px;
+      }
+    }
+  }
 `;

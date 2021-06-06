@@ -63,7 +63,7 @@ Antes de começar, você vai precisar ter instalado em sua máquina as seguintes
   $ yarn start
 ```
 ---
-By Rodrigo Sakamoto
+- By Rodrigo Sakamoto
 
 [![Linkedin Badge](https://img.shields.io/badge/-Rodrigo%20Sakamoto-9146ff?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/rodrigo-sakamoto/)](https://www.linkedin.com/in/rodrigo-sakamoto/)
 [![Gmail Badge](https://img.shields.io/badge/-rodosakamoto@gmail.com-9146ff?style=flat-square&logo=Gmail&logoColor=white&link=mailto:rodosakamoto@gmail.com)](mailto:rodosakamoto@gmail.com)
